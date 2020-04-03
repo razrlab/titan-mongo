@@ -2,7 +2,7 @@ version: "2"
 
 services:
   mongodb-primary:
-    image: "bitnami/mongodb:3.6.11"
+    image: "bitnami/mongodb:4.2.5"
     container_name: "mongodb-primary"
     ports:
       - "27717:27717"
@@ -22,7 +22,7 @@ services:
       - replica-docker
 
   mongodb-secondary:
-    image: "bitnami/mongodb:3.6.11"
+    image: "bitnami/mongodb:4.2.5"
     container_name: "mongodb-secondary"
     ports:
       - "27718:27718"
@@ -43,7 +43,7 @@ services:
       - replica-docker
 
   mongodb-arbiter:
-    image: "bitnami/mongodb:3.6.11"
+    image: "bitnami/mongodb:4.2.5"
     container_name: "mongodb-arbiter"
     ports:
       - "27720:27720"
