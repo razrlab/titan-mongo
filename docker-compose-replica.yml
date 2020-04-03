@@ -20,6 +20,12 @@ services:
       - "mongodb_master_data:/bitnami"
     networks:
       - replica-docker
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "500m"
+    restart: always
 
   mongodb-secondary:
     image: "bitnami/mongodb:4.2.5"
@@ -41,6 +47,12 @@ services:
       - "mongodb_secondary_data:/bitnami"
     networks:
       - replica-docker
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "500m"
+    restart: always
 
   mongodb-arbiter:
     image: "bitnami/mongodb:4.2.5"
@@ -62,6 +74,12 @@ services:
       - "mongodb_arbiter_data:/bitnami"
     networks:
       - replica-docker
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "500m"
+    restart: always
 
 volumes:
   mongodb_master_data:
