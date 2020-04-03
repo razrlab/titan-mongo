@@ -1,0 +1,21 @@
+version: "2"
+
+services:
+  mongodb:
+    image: "bitnami/mongodb:4.2.5"
+    environment:
+      environment:
+        - MONGODB_ADVERTISED_HOSTNAME=${MONGODB_PRIMARY_HOSTNAME}
+        - MONGODB_PORT_NUMBER=27717
+        - MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
+        - MONGODB_USERNAME=${MONGODB_USERNAME}
+        - MONGODB_PASSWORD=${MONGODB_PASSWORD}
+        - MONGODB_DATABASE=${MONGODB_DATABASE}
+    ports:
+      - "27717:27717"
+    volumes:
+      - "mongodb_data:/bitnami"
+
+volumes:
+  mongodb_data:
+    driver: local
