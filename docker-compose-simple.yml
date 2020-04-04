@@ -3,6 +3,7 @@ version: "2"
 services:
   mongodb:
     image: "bitnami/mongodb:4.2.5"
+    container_name: "mongodb-primary"
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=${MONGODB_PRIMARY_HOSTNAME}
       - MONGODB_PORT_NUMBER=27717
@@ -14,6 +15,26 @@ services:
       - "27717:27717"
     volumes:
       - "mongodb_data:/bitnami"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "500m"
+    restart: always
+  mongo-express:
+    image: "mongo-express:latest"
+    container_name: "mongo-express"
+    ports:
+      - 8088:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb-primary
+      - ME_CONFIG_MONGODB_PORT=27717
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_ROOT_PASSWORD}
+      - ME_CONFIG_BASICAUTH_USERNAME=root
+      - ME_CONFIG_BASICAUTH_PASSWORD=${MONGODB_ROOT_PASSWORD}
+      # - ME_CONFIG_OPTIONS_EDITORTHEME=night
+      # - ME_CONFIG_REQUEST_SIZE=100kb
     logging:
       driver: "json-file"
       options:
