@@ -2,7 +2,7 @@ version: "2"
 
 services:
   mongodb:
-    image: "bitnami/mongodb:4.2.5"
+    image: "bitnami/mongodb:4.4.2"
     container_name: "mongodb-primary"
     environment:
       - MONGODB_ADVERTISED_HOSTNAME=${MONGODB_PRIMARY_HOSTNAME}
