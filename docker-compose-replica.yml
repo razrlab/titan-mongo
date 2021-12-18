@@ -28,7 +28,7 @@ services:
     restart: always
 
   mongodb-secondary:
-    image: "bitnami/mongodb:4.4.2"
+    image: "bitnami/mongodb:5.0.5"
     container_name: "mongodb-secondary"
     ports:
       - "27718:27718"
@@ -55,7 +55,7 @@ services:
     restart: always
 
   mongodb-arbiter:
-    image: "bitnami/mongodb:4.4.2"
+    image: "bitnami/mongodb:5.0.5"
     container_name: "mongodb-arbiter"
     ports:
       - "27720:27720"
