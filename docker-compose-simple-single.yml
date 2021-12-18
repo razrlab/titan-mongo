@@ -5,15 +5,12 @@ services:
     image: "bitnami/mongodb:5.0.5"
     container_name: "mongodb-primary"
     environment:
-      - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_ADVERTISED_HOSTNAME=${MONGODB_PRIMARY_HOSTNAME}
       - MONGODB_PORT_NUMBER=27717
       - MONGODB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
       - MONGODB_USERNAME=${MONGODB_USERNAME}
       - MONGODB_PASSWORD=${MONGODB_PASSWORD}
       - MONGODB_DATABASE=${MONGODB_DATABASE}
-      - MONGODB_REPLICA_SET_KEY=${MONGODB_REPLICA_SET_KEY}
-      - MONGODB_REPLICA_SET_NAME=${MONGODB_REPLICA_SET_NAME}
     ports:
       - "27717:27717"
     volumes:
@@ -24,6 +21,14 @@ services:
         max-file: "5"
         max-size: "500m"
     restart: always
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: "0.6"
+    #       memory: 1000M
+    #     reservations:
+    #       cpus: "0.3"
+    #       memory: 500M
   # mongo-express:
   #   image: "mongo-express:latest"
   #   container_name: "mongo-express"
@@ -36,7 +41,7 @@ services:
   #     - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_ROOT_PASSWORD}
   #     - ME_CONFIG_BASICAUTH_USERNAME=root
   #     - ME_CONFIG_BASICAUTH_PASSWORD=${MONGODB_ROOT_PASSWORD}
-  #     - ME_CONFIG_OPTIONS_EDITORTHEME=night
+  #     # - ME_CONFIG_OPTIONS_EDITORTHEME=night
   #     # - ME_CONFIG_REQUEST_SIZE=100kb
   #   logging:
   #     driver: "json-file"
