@@ -12,8 +12,7 @@ services:
       - MONGODB_DATABASE=${MONGODB_DATABASE}
       - MONGODB_REPLICA_SET_KEY=${MONGODB_REPLICA_SET_KEY}
       - MONGODB_REPLICA_SET_NAME=${MONGODB_REPLICA_SET_NAME}
-    ports:
-      - "${MONGODB_PORT_NUMBER:-27017}:27017"
+    network_mode: host
     volumes:
       - "mongodb_data:/bitnami"
     logging:
