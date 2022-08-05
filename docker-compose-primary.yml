@@ -2,7 +2,7 @@ version: "2"
 
 services:
   mongodb:
-    image: "bitnami/mongodb:5.0"
+    image: "bitnami/mongodb:6.0"
     environment:
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_PORT_NUMBER=${MONGODB_PORT_NUMBER}

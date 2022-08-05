@@ -2,7 +2,7 @@ version: "2"
 
 services:
   mongodb:
-    image: "bitnami/mongodb:5.0.5"
+    image: "bitnami/mongodb:6.0"
     container_name: "mongodb-primary"
     environment:
       - MONGODB_REPLICA_SET_MODE=primary
